@@ -1,7 +1,7 @@
 absl-py==2.0.0
 astunparse==1.6.3
 cachetools==5.3.2
-certifi==2023.5.7
+certifi @ file:///croot/certifi_1671487769961/work/certifi
 charset-normalizer==3.3.2
 click==8.1.7
 Flask==2.2.5
@@ -11,7 +11,7 @@ google-auth==2.26.2
 google-auth-oauthlib==0.4.6
 google-pasta==0.2.0
 grpcio==1.60.0
-gunicorn==19.7.1
+gunicorn==21.2.0
 h5py==3.8.0
 idna==3.6
 importlib-metadata==6.7.0
