@@ -11,6 +11,7 @@ with open(model_filename, 'rb') as model_file:
     model = pickle.load(model_file)
 
 # Define the class labels
+# Assuming train_generator is defined elsewhere in the code
 class_labels = list(train_generator.class_indices.keys())
 
 @app.route('/predict', methods=['POST'])
@@ -20,6 +21,7 @@ def predict():
         image_file = request.files['image']
         
         # Load the image and preprocess it for the model
+        img_width, img_height = 224, 224  # Replace with your desired image dimensions
         img = image.load_img(image_file, target_size=(img_width, img_height))
         img_array = image.img_to_array(img)
         img_array = np.expand_dims(img_array, axis=0)
@@ -35,7 +37,7 @@ def predict():
         # Prepare the response
         response = {
             'predicted_class': predicted_class,
-            'confidence': predictions[0][predicted_class_index]
+            'confidence': float(predictions[0][predicted_class_index])
         }
 
         return jsonify(response)
